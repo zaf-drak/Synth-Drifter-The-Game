@@ -1,0 +1,82 @@
+Debug.Log(...);  // κανει το περιεχόμενο να φαινετε στο debug log για να βλεπουμε live την αλλαγη μιας μεταβλητης
+
+====================================================
+
+
+anotato wrio speed 20
+0.5 sec spawn
+
+====================================================
+
+yυπολογισμος διαστάσεων κάμερας 
+	Camera camera = Camera.main;
+	float halfHeight = camera.orthographicSize;  //gives you the verical half-height of the camera in world units (the distance from the center of the view to the top)
+
+	float halfWidth = camera.aspect * halfHeight;  //Multiplying that by the camera's width:height aspect ratio, camera.aspect, gives us our half-width in worldspace units.
+
+	horizontalMin = -halfWidth;
+	horizontalMax =  halfWidth;
+
+====================================================
+
+1) background move speed = neutral enemy move speed
+ difficulty increases every x seconds aka background speed and neutral speed increases every x seconds
+2) speed aka difficulty has thresholds like a flag example: speed = 4.25 <6 then difficulty = easy, if x>6 && x<12 medium x>12 DEATHFINITIVE
+3) enemies reward more points based on difficulty level
+4) not all enemies reward points though. Some might contact damage.
+
+
+taxitita den allazei 
+taxitita den kanei reset swsta krataei thn teleutea timi
+
+stationary enemy
+	same speed as background
+	MAYBE cannot be destroyed?
+	Does not yield points
+
+fast enemy
+	Faster than background
+	Can be destroyed
+	Yields more points than slow enemy
+	
+slow enemy
+	Slower than background
+	Can be destroyed
+	Yields less points than fast enemy
+	Hardcap on how fast it can go
+
+
+Lane 2
+switching to backlane makes your scale smaller
+switching to frontlane makes your scale normal
+
+when player moves from back to front he regains his original scale
+Up and down arrow used to transfer back and forth
+when player presses up the GROUNDBOX moves...
+when player presses down the GROUNDBOX MOVES YET AGAIN!!!
+
+second spawner on backlane with smaller scaled enemies
+2 lanes 2 layers
+
+LANE 1 = GROUNDBOX original coordenates min height
+x=1 y=-5.16 z=-202.3144
+
+Lane 2 = GROUNDBOX coordenates aka max height
+x= 1 y=-4.16 z=-202.3144
+
+optimize and possibly fix vsync error with repeatbg
+
+enemy tagg
+	
+
+enemy layer
+	life system
+
+enemy name
+	attacking score
+
+========================================
+
+problems to solve 02/16/2021 FIXED
+enemies trigger OnTriggerEnter2D all then time if they are from the UPPER lane. Which in turn makes them unable to hurt us, as they are already inside the checkzone. (if they player leaves and comes back somehow they damage the player, they work as intended though)
+
